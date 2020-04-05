@@ -2,6 +2,36 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class BonusServiceTest {
 
+    @org.junit.jupiter.api.Test
+    void shouldCalculateForRegisteredEquallyLimit() {
+        BonusService service = new BonusService();
+
+        // подготавливаем данные
+        long amount = 16666_67;
+        boolean registered = true;
+        long expected = 500;
+
+        // вызываем целевой метод
+        long actual = service.calculate(amount, registered);
+
+        assertEquals(expected, actual);
+
+    }
+    @org.junit.jupiter.api.Test
+    void shouldCalculateForNoRegisteredEquallyLimit() {
+        BonusService service = new BonusService();
+
+        // подготавливаем данные
+        long amount = 5000_000;
+        boolean registered = false;
+        long expected = 500;
+
+        // вызываем целевой метод
+        long actual = service.calculate(amount, registered);
+
+        assertEquals(expected, actual);
+    }
+
 
     @org.junit.jupiter.api.Test
     void shouldCalculateForRegisteredAndUnderLimit() {
